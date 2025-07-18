@@ -1,0 +1,36 @@
+services:
+  web:
+    image: odoo:18.0
+    volumes:
+      - ./config:/etc/odoo
+      - odoo-web-data:/var/lib/odoo
+      - <YOUR ENTERPRISE DIRECTORY>:/mnt/extra-addons
+    environment:
+      - HOST=mydb
+      - USER=odoo
+      - PASSWORD=myodoo
+    depends_on:
+      - mydb
+  mydb:
+    image: postgres:16
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=myodoo
+      - POSTGRES_USER=odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+  nginx:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:rw
+    depends_on:
+      - web
+  mailhog:
+    image: mailhog/mailhog
+volumes:
+  odoo-web-data:
+    name: odoo-web-data
+  odoo-db-data:
+    name: odoo-db-data
