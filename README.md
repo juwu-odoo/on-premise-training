@@ -7,7 +7,7 @@ This demo uses docker-compose to run a local deployment of Odoo, MailHog, and Ng
 The Ubuntu-specific instructions are available [here](https://docs.docker.com/desktop/setup/install/linux/ubuntu/).
 2.  Clone this repo and cd into `docker_demo/`.
 3.  Edit "`<YOUR ENTERPRISE DIRECTORY>`" in `compose.yml` to point to your Odoo enterprise source folder.
-4.  [Optional] Pre fetch the images by running `docker compose pull`
+4.  Pre fetch the images by running `docker compose pull`
 5.  Launch the demo by running `docker compose up`. You should see four containers get spun up. The instance can be gracefully stopped by entering Ctrl+C in the terminal or by hitting the stop button from Docker Desktop.
 <img width="610" height="254" alt="image" src="https://github.com/user-attachments/assets/924e0feb-c2fc-4280-9090-89cfe57c66a1" />
 
